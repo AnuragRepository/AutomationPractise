@@ -28,28 +28,25 @@ public class BrokenLinkPrac {
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
         //driver.get("https://www.accenture.com/in-en");
         //List<WebElement> links =  driver.findElements(By.tagName("a")); // java.net.MalformedURLException due to # URL
-        try
-        {
-            List<WebElement> links =  driver.findElements(By.xpath("//table/tbody/tr/td[1]/ul/li/a")); //error not showing
+
+        try {
+            List<WebElement> links = driver.findElements(By.xpath("//table/tbody/tr/td[1]/ul/li/a")); //error not showing
             //List<WebElement> links =  driver.findElements(By.xpath("//li[@class='gf-li']/a")); // java.net.MalformedURLException due to # URL, but for rahul shetty not this exception
-            for(WebElement link :links)
-            {
+            for (WebElement link : links) {
+
                 //System.out.println(link.getDomAttribute("href"));
                 HttpURLConnection conn = (HttpURLConnection) new URL(link.getDomAttribute("href")).openConnection();
                 conn.setRequestMethod("HEAD");
                 conn.connect();
                 System.out.println(conn.getResponseCode());
-                softassert.assertTrue(conn.getResponseCode()<400,"Link"+link.getText()+" failed with status "+conn.getResponseCode());
+                softassert.assertTrue(conn.getResponseCode() < 400, "Link" + link.getText() + " failed with status " + conn.getResponseCode());
             }
             softassert.assertAll();
             closeBrowser(driver);
+        } catch (AssertionError e) {
+            e.printStackTrace();
+           // throw new RuntimeException(e);
         }
-        catch(AssertionError exception)
-        {
-            //throw exception.printStackTrace();
-            //throw new RuntimeException(Exception);
-        }
-
     }
 
     public static void closeBrowser(WebDriver driver)
