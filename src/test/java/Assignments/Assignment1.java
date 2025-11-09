@@ -32,6 +32,7 @@ public class Assignment1 {
         clickSubmit(driver);
         verifySuccessMessage(driver,successMessageLocator);
         closeBrowser(driver);
+
         getName();
     }
 
@@ -43,8 +44,16 @@ public class Assignment1 {
         System.out.println("My name is anurag");
         System.out.println("My name is anurag");
         System.out.println("My name is anurag");
-    }
 
+        deleteMethod();
+    }
+  public static void deleteMethod()
+    {
+       System.out.println("Master");
+        System.out.println("Master");
+        System.out.println("Master");
+
+    }
     public static void closeBrowser(WebDriver driver)
     {
         driver.quit();
