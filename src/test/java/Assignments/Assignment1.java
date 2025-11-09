@@ -32,8 +32,14 @@ public class Assignment1 {
         clickSubmit(driver);
         verifySuccessMessage(driver,successMessageLocator);
         closeBrowser(driver);
+        deleteMethod();
     }
-
+  public static void deleteMethod()
+    {
+       System.out.println("Master");
+        System.out.println("Master");
+        System.out.println("Master");
+    }
     public static void closeBrowser(WebDriver driver)
     {
         driver.quit();
