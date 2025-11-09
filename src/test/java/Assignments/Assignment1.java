@@ -32,6 +32,17 @@ public class Assignment1 {
         clickSubmit(driver);
         verifySuccessMessage(driver,successMessageLocator);
         closeBrowser(driver);
+        getName();
+    }
+
+    public void getName()
+
+    {
+        System.out.println("My name is anurag");
+        System.out.println("My name is anurag");
+        System.out.println("My name is anurag");
+        System.out.println("My name is anurag");
+        System.out.println("My name is anurag");
     }
 
     public static void closeBrowser(WebDriver driver)
@@ -103,5 +114,7 @@ public class Assignment1 {
         System.out.println("first index = "+successMessage.getText().split("×")[1].trim());
         Assert.assertEquals(successMessage.getText().split("×")[1].trim(),"Success! The Form has been submitted successfully!.");
     }
+
+
 
 }
