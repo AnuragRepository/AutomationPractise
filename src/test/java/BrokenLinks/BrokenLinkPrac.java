@@ -42,9 +42,10 @@ public class BrokenLinkPrac {
                 softassert.assertTrue(conn.getResponseCode() < 400, "Link" + link.getText() + " failed with status " + conn.getResponseCode());
             }
             softassert.assertAll();
-            closeBrowser(driver);
+            //closeBrowser(driver);// it will not execute since after soft assert fail execution will directly go to catch
         } catch (AssertionError e) {
             e.printStackTrace();
+            closeBrowser(driver);
            // throw new RuntimeException(e);
         }
     }
