@@ -19,12 +19,12 @@ public class Screenshot {
 
         //selenium3
         File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(src,new File("C:/Users/dell/IntelliJ/AUTOMATION/automationscreenshot3.png"));
+        FileUtils.copyFile(src,new File(System.getProperty("user.dir")+"//ScreenshotFolder//Selenium3Screenshot.png"));
 
         //selenium4
         WebElement nameLabel = driver.findElement(By.xpath("//*[text()='Name']"));
         File src1 = nameLabel.getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(src1,new File("C:/Users/dell/IntelliJ/AUTOMATION/automationscreenshotSelenium4.png"));
+        FileUtils.copyFile(src1,new File(System.getProperty("user.dir")+"//ScreenshotFolder//Selenium4Screenshot.png"));
         closeBrowser(driver);
     }
 

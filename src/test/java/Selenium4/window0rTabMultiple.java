@@ -29,7 +29,7 @@ public class window0rTabMultiple {
         String childWindowID = it.next();
         driver.switchTo().window(childWindowID);
         driver.get("https://rahulshettyacademy.com/");
-        String firstCourse = driver.findElement(By.xpath("//*[@id='courses-block']/div[1]/div/div[2]/div[1]/h2/a")).getText();
+        String firstCourse = driver.findElement(By.xpath("//*[contains(@class,'grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-4 mb-12')]/div[1]/div[2]/h3")).getText();
         System.out.println("firstCourse ="+firstCourse);
         driver.switchTo().window(parentWindowID);
         //selenium 4 locator not working may be due to flex elements

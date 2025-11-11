@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Assignment Package">
-    <test name="Assignment Test">
+<suite name="AutomationBasicsSuite">
+    <test name="BasicsTest">
         <packages>
             <package name="Basics"/>
         </packages>

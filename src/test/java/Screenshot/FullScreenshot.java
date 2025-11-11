@@ -19,10 +19,19 @@ public class FullScreenshot {
         driver.manage().window().maximize();
         driver.get("https://www.google.com/");
 
-       File src =  ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(src,new File("C://Users//dell//automationscreenshot1.png"));
-        FileUtils.copyFile(src,new File("C://Users//dell//IntelliJ//AUTOMATION//automationscreenshot2.png"));
+        TakesScreenshot ts = (TakesScreenshot)driver;
+        File file = ts.getScreenshotAs(OutputType.FILE);
+        File src = new File(System.getProperty("user.dir")+"//ScreenshotFolder//AutomationScreenshot.png");
+        FileUtils.copyFile(file,src);
         closeBrowser(driver);
+
+
+     /*   TakesScreenshot ts = (TakesScreenshot)driver;
+        File src = ts.getScreenshotAs(OutputType.FILE);
+
+        File file = new File (System.getProperty("user.dir")+"//ScreenshotFolder//AutomationScreenshot.png");
+        FileUtils.copyFile(src,file);
+        closeBrowser(driver);*/
     }
 
     public static void closeBrowser(WebDriver driver)
