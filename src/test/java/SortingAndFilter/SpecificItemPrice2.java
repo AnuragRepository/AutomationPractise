@@ -1,5 +1,6 @@
 package SortingAndFilter;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,7 @@ public class SpecificItemPrice2 {
 
     @Test
     public void test()  {
-        System.setProperty("webdriver.chrome.driver", "C:/Driver/chromedriver-win64/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");

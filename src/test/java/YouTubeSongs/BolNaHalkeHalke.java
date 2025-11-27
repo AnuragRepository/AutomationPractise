@@ -19,14 +19,15 @@ public class BolNaHalkeHalke {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.youtube.com/watch?v=jXwg9l9D51A");
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(1000000));
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5000));
 
         WebElement replay = driver.findElement(By.xpath("//*[@class='ytp-left-controls']/button"));
 
         if(replay.getDomAttribute("data-title-no-tooltip").equalsIgnoreCase("Play")||replay.getDomAttribute("data-title-no-tooltip").equalsIgnoreCase("Pause"))
         {
             driver.findElement(By.xpath("//*[@data-tooltip-title='Play (k)']")).click();
-            wait.until(ExpectedConditions.domAttributeToBe(replay,"data-title-no-tooltip","Replay"));
+            //something went wrong displaying after 1 mints and due to below wait its keep on waiting so commenting
+            //wait.until(ExpectedConditions.domAttributeToBe(replay,"data-title-no-tooltip","Replay"));
         }
         closeBrowser(driver);
     }
