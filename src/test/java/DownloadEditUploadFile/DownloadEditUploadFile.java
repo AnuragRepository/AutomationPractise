@@ -44,20 +44,20 @@ public class DownloadEditUploadFile {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //Fetch original banana price in UI
-        fruitPriceInUI = getBananaPriceFromUI(driver,fruitName);
+        //Fetch original fruit price in UI
+        fruitPriceInUI = getFruitPriceFromUI(driver,fruitName);
 
         //Download the excel and verify
         File file = excelDownloadAndVerify(wait,driver,downloadPath);
 
-        //Edit banana price in download excel
-        updatedPriceValueInExcel = editBananaPriceInDownloadedExcel(downloadPath,originalPriceValueInExcel,updatedPriceValueInExcel,fruitPriceToUpdate,fruitName);
+        //Edit fruit price in download excel
+        updatedPriceValueInExcel = editFruitPriceInDownloadedExcel(downloadPath,originalPriceValueInExcel,updatedPriceValueInExcel,fruitPriceToUpdate,fruitName);
 
         //upload the modified excel
         uploadEditedExcel(wait,driver,downloadPath);
 
-        //verify updated banana price in UI
-        fruitPriceInUI =  getBananaPriceFromUI(driver,fruitName);
+        //verify updated fruit price in UI
+        fruitPriceInUI =  getFruitPriceFromUI(driver,fruitName);
         Assert.assertEquals(fruitPriceInUI,updatedPriceValueInExcel);
         Assert.assertEquals(fruitPriceInUI,fruitPriceToUpdate);
 
@@ -101,8 +101,8 @@ public class DownloadEditUploadFile {
 
     }
 
-    private String editBananaPriceInDownloadedExcel(String downloadPath, String originalPriceValueInExcel, String updatedPriceValueInExcel, String fruitPriceToUpdate, String fruitName) throws FilloException {
-        //Edit banana price in downloaded excel
+    private String editFruitPriceInDownloadedExcel(String downloadPath, String originalPriceValueInExcel, String updatedPriceValueInExcel, String fruitPriceToUpdate, String fruitName) throws FilloException {
+        //Edit fruit price in downloaded excel
 
         Fillo fillo = new Fillo();
         Connection connection = fillo.getConnection(downloadPath+File.separator+"download.xlsx");
@@ -122,7 +122,7 @@ public class DownloadEditUploadFile {
                     Recordset updatedRecordset = connection.executeQuery("select price from Sheet1 where fruit_name = '"+fruitName+"'");
                     updatedRecordset.next();
                     updatedPriceValueInExcel =  updatedRecordset.getField("price");
-                    System.out.println("Updated Banana Price Value in excel = "+updatedPriceValueInExcel);
+                    System.out.println("Updated "+fruitName+" Price Value in excel = "+updatedPriceValueInExcel);
                 }
                 else{
                     updatedPriceValueInExcel = originalPriceValueInExcel;
@@ -159,11 +159,11 @@ public class DownloadEditUploadFile {
 
     }
 
-    private String getBananaPriceFromUI(WebDriver driver, String fruitName ) {
-        //Fetch original banana price in UI
+    private String getFruitPriceFromUI(WebDriver driver, String fruitName ) {
+        //Fetch original fruit price in UI
         WebElement fruitPrice = driver.findElement(By.xpath("//div[contains(@class, 'sc-hIPBNq')]/div/div[2] //div[text()='"+fruitName+"']/parent::div/following-sibling::div[2]"));
         String fruitPriceInUI = fruitPrice.getText();
-        System.out.println("Current Banana Price Value in UI = "+fruitPriceInUI);
+        System.out.println("Current "+fruitName+" Price Value in UI = "+fruitPriceInUI);
         return fruitPriceInUI;
     }
 
