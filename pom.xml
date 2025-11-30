@@ -262,7 +262,7 @@
         </profile>
 
         <profile>
-            <id>ProfileIDDownloadEditUploadFile</id>
+            <id>ProfileIDDownloadEditUploadFileViaSendKeys</id>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -272,7 +272,7 @@
                             <version>3.5.4</version>
                             <configuration>
                                 <suiteXmlFiles>
-                                    <suiteXmlFile>testngDownloadEditUploadFile.xml</suiteXmlFile>
+                                    <suiteXmlFile>testngDownloadEditUploadFileViaSendKeys.xml</suiteXmlFile>
                                 </suiteXmlFiles>
                             </configuration>
                         </plugin>
